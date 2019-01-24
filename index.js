@@ -9,8 +9,7 @@ const server = hapi.server({
 
 
 //This credential is not correct create your database on mlab and connect to yours
-// mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds357261.mlab.com:<yourport>/<yourdb>'); 
-mongoose.connect('mongodb://admin:GijhSH3eR9XTp7k@ds211635.mlab.com:11635/node_api'); 
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds357261.mlab.com:<yourport>/<yourdb>'); 
 
 mongoose.connection.once('open', ()=>{
     console.log('Connected to database');
