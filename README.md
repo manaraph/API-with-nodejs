@@ -2,7 +2,7 @@
 > An API with Node, Hapi.js, Mongo DB
 
 ## Cloning Repository
-git clone git@github.com:manaraph/API-with-nodejs.git
+> git clone git@github.com:manaraph/API-with-nodejs.git
 
 ## Installation and running app with npm
 ``` bash
