@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "apollo-server-hapi": "^2.3.2",
+    "graphql": "^14.1.1",
     "hapi": "^18.0.0",
     "mongoose": "^5.4.6",
     "nodemon": "^1.18.9"
