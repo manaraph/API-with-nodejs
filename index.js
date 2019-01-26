@@ -1,5 +1,6 @@
 const hapi = require('hapi');
 const mongoose = require('mongoose');
+const Painting = require('./models/Painting')
 
 //Set up hapi server
 const server = hapi.server({
@@ -10,14 +11,14 @@ const server = hapi.server({
 
 //This credential is not correct create your database on mlab and connect to yours
 // mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds357261.mlab.com:<yourport>/<yourdb>'); 
-mongoose.connect('mongodb://admin:GijhSH3e89XTp7k@ds218635.mlab.com:17635/node_api'); //Modify to suite the DB you have created
+// mongoose.connect('mongodb://admin:GijhSH3e89XTp7k@ds218635.mlab.com:17635/node_api'); //Modify to suite the DB you have created
 
 mongoose.connection.once('open', ()=>{
     console.log('Connected to database');
     
 })
 
-const Painting = require('./models/Painting')
+
 //Set up routes
 const init = async () => {
     server.route([
@@ -45,7 +46,7 @@ const init = async () => {
                     url,
                     techniques
                 })
-                return Painting.save();
+                return painting.save();
             }
         }
     ]);
