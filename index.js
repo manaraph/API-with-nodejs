@@ -1,3 +1,4 @@
+require('dotenv').config()
 const hapi = require('hapi');
 const mongoose = require('mongoose');
 const Painting = require('./models/Painting')
@@ -6,18 +7,22 @@ const {graphqlHapi, graphiqlHapi } = require('apollo-server-hapi');
 
 //Set up hapi server
 const server = hapi.server({
-    port: 4000,
-    host: 'localhost'
+    port: process.env.PORT,
+    host: process.env.HOST
 });
 
 
 // Get mongo credential from .env file. Create your database, username and password and set the mongoDB URI variable in .env file
-mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true }).then(() => {
+        console.log('Successfully connected to database')
+    }).catch(error => {
+        console.error('Error connecting to MongoDB database', error)
+    })
 
-mongoose.connection.once('open', ()=>{
-    console.log('Connected to database');
+// mongoose.connection.once('open', ()=>{
+//     console.log('Connected to database');
     
-})
+// })
 
 
 //Set up routes
@@ -54,7 +59,7 @@ const init = async () => {
     await server.start();
     console.log(`Server running at: ${server.info.uri}`);    
 
-    await server. regisiter({
+    await server. register({
         plugin: graphiqlHapi,
         options: {
             path: '/graphiql',
@@ -82,7 +87,7 @@ const init = async () => {
 };
 
 // const init2 = async() =>{
-    // await server. regisiter({
+    // await server. register({
     //     plugin: graphiqlHapi,
     //     options: {
     //         path: '/graphiql',
