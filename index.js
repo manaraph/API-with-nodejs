@@ -2,7 +2,7 @@ const hapi = require('hapi');
 const mongoose = require('mongoose');
 const Painting = require('./models/Painting')
 const schema =  require('./graphql/schema')
-const {graphql, graphqlHapi } = require('apollo-server-hapi');
+const {graphqlHapi, graphiqlHapi } = require('apollo-server-hapi');
 
 //Set up hapi server
 const server = hapi.server({
@@ -11,9 +11,8 @@ const server = hapi.server({
 });
 
 
-//This credential is not correct create your database on mlab and connect to yours
-// mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds357261.mlab.com:<yourport>/<yourdb>'); 
-// mongoose.connect('mongodb://admin:GijhSH3e89XTp7k@ds218635.mlab.com:17635/node_api'); //Modify to suite the DB you have created
+// Get mongo credential from .env file. Create your database, username and password and set the mongoDB URI variable in .env file
+mongoose.connect(process.env.MONGO_URI, { useMongoClient: true })
 
 mongoose.connection.once('open', ()=>{
     console.log('Connected to database');
@@ -54,9 +53,7 @@ const init = async () => {
     ]);
     await server.start();
     console.log(`Server running at: ${server.info.uri}`);    
-};
 
-const init2 = async() =>{
     await server. regisiter({
         plugin: graphiqlHapi,
         options: {
@@ -82,6 +79,34 @@ const init2 = async() =>{
         },
 
     })
-}
+};
+
+// const init2 = async() =>{
+    // await server. regisiter({
+    //     plugin: graphiqlHapi,
+    //     options: {
+    //         path: '/graphiql',
+    //         graphiqlOptions: {
+    //             endpointURL: '/graphql'
+    //         },
+    //         route: {
+    //             cors: true
+    //         }
+    //     }
+    // }),
+    // await server.register({
+    //     plugin: graphqlHapi,
+    //     options: {
+    //         path: '/graphql',
+    //         graphiqlOptions: {
+    //             schema
+    //         },
+    //         route: {
+    //             cors: true
+    //         }
+    //     },
+
+    // })
+// }
 
 init();
