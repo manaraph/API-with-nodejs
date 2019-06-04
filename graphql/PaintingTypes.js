@@ -1,7 +1,7 @@
 const graphql = require('graphql') 
 
 const {GraphQLObjectType, GraphQLString} = graphql;
-// code above is same thing as
+//  deconstructing objects => code above is same thing as
 // const GraphQLObjectType = graphql.GraphQLObjectType
 // const GraphQLString = graphql.GraphQLString
 

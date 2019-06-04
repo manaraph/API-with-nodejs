@@ -16,6 +16,9 @@ const RootQuery = new GraphQLObjectType({
             args: { id: {type: GraphQLString }},
             resolve(parent, args){
                 //Logic for serving data
+                // painting(id: 20){
+                //     name
+                // }
             }
             
         }

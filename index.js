@@ -5,7 +5,7 @@ const Painting = require('./models/Painting')
 const schema =  require('./graphql/schema')
 const {graphqlHapi, graphiqlHapi } = require('apollo-server-hapi');
 
-//Set up hapi server
+//Set up hapi server using .env variables
 const server = hapi.server({
     port: process.env.PORT,
     host: process.env.HOST
@@ -56,8 +56,6 @@ const init = async () => {
             }
         }
     ]);
-    await server.start();
-    console.log(`Server running at: ${server.info.uri}`);    
 
     // await server.register({
     //     plugin: graphiqlHapi,
@@ -84,6 +82,11 @@ const init = async () => {
     //     },
 
     // })
+    
+    await server.start();
+    console.log(`Server running at: ${server.info.uri}`);    
+
+   
 };
 
 // const init2 = async() =>{
