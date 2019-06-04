@@ -59,31 +59,31 @@ const init = async () => {
     await server.start();
     console.log(`Server running at: ${server.info.uri}`);    
 
-    await server. register({
-        plugin: graphiqlHapi,
-        options: {
-            path: '/graphiql',
-            graphiqlOptions: {
-                endpointURL: '/graphql'
-            },
-            route: {
-                cors: true
-            }
-        }
-    }),
-    await server.register({
-        plugin: graphqlHapi,
-        options: {
-            path: '/graphql',
-            graphiqlOptions: {
-                schema
-            },
-            route: {
-                cors: true
-            }
-        },
+    // await server.register({
+    //     plugin: graphiqlHapi,
+    //     options: {
+    //         path: '/graphiql',
+    //         graphiqlOptions: {
+    //             endpointURL: '/graphql'
+    //         },
+    //         route: {
+    //             cors: true
+    //         }
+    //     }
+    // }),
+    // await server.register({
+    //     plugin: graphqlHapi,
+    //     options: {
+    //         path: '/graphql',
+    //         graphiqlOptions: {
+    //             schema
+    //         },
+    //         route: {
+    //             cors: true
+    //         }
+    //     },
 
-    })
+    // })
 };
 
 // const init2 = async() =>{
