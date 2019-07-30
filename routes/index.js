@@ -1,4 +1,4 @@
-const carController = require('../controllers/carController');
+import carController from '../controllers/carController';
 
 const routes = [
   {
@@ -29,4 +29,5 @@ const routes = [
   }
 ];
 
-module.exports = routes;
+// module.exports = routes;
+export default routes;

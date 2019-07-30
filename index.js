@@ -1,14 +1,15 @@
 const fastlify = require('fastify')({logger: true});
-const mongoose = require('mongoose');
-const routes = require('./routes');
-const swagger = require('./config/swagger');
+import mongoose from 'mongoose';
+import fastlifySwagger from 'fastify-swagger';
+import routes from './routes';
+import swagger from './config/swagger';
 
 // Connect to mongoDB
 mongoose.connect('mongodb://localhost/mygarage')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
-fastlify.register(require('fastify-swagger'), swagger.options);
+fastlify.register(fastlifySwagger, swagger.options);
 
 fastlify.get('/', async(request, reply) => {
   return {hello: 'world'}

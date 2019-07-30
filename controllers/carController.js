@@ -1,5 +1,5 @@
-const boom = require('boom');
-const Car = require('../models/Car');
+import boom from 'boom';
+import Car from '../models/Car';
 
 exports.getCars = async (req, res) => {
   try {

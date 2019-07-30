@@ -31,3 +31,4 @@ yarn start
 ## Credits
 Adapted from:
 - [How to build blazing fast REST APIs with Node.js, MongoDB, Fastify and Swagger](https://www.freecodecamp.org/news/how-to-build-blazing-fast-rest-apis-with-node-js-mongodb-fastify-and-swagger-114e062db0c9/) - Siegfried Grimbeek.
+- [How to build blazing fast GraphQL API with Node.js, MongoDB, Fastify and Swagger](https://www.freecodecamp.org/news/how-to-build-a-blazing-fast-graphql-api-with-node-js-mongodb-and-fastify-77fd5acd2998/) - Siegfried Grimbeek.
