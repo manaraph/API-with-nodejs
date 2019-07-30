@@ -1,6 +1,6 @@
 const fastlify = require('fastify')({logger: true});
 
-fastlify.get('/', async(request, response) => {
+fastlify.get('/', async(request, reply) => {
   return {hello: 'world'}
 });
 
