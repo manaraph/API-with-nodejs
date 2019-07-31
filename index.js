@@ -1,19 +1,10 @@
-const fastlify = require('fastify')({logger: true});
+import fastlify from './server';
 import mongoose from 'mongoose';
 import fastlifySwagger from 'fastify-swagger';
 import routes from './routes';
 import swagger from './config/swagger';
 
-// Connect to mongoDB
-mongoose.connect('mongodb://localhost/mygarage')
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
-
 fastlify.register(fastlifySwagger, swagger.options);
-
-fastlify.get('/', async(request, reply) => {
-  return {hello: 'world'}
-});
 
 routes.forEach((route, index) => {
   fastlify.route(route);
@@ -21,12 +12,12 @@ routes.forEach((route, index) => {
 
 const start = async () => {
   try {
-    await fastlify.listen(3000);
+    await fastlify.listen(3000, '0.0.0.0');
     fastlify.swagger();
     fastlify.log.info(`Server listening on ${fastlify.server.address().port}`);
   } catch (error) {
     fastlify.log.error(error);
-    process.exit(1)
+    process.exit(1);
   }
 };
 

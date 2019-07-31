@@ -1,14 +1,16 @@
 import mongoose from 'mongoose';
 
+const ObjectId = mongoose.Schema.Types.ObjectId;
+
 const carSchema = new mongoose.Schema({
   title: String,
   brand: String,
   price: String,
   age: Number,
-  services: {
-    type: Map, of: String
-  }
+  owner_id: ObjectId
+  // services: {
+  //   type: Map, of: String
+  // }
 });
 
-// module.exports = mongoose.model('Car', carSchema);
 export default mongoose.model('Car', carSchema);
