@@ -1,22 +1,22 @@
-import fastlify from './server';
+import fastify from './server';
 import mongoose from 'mongoose';
-import fastlifySwagger from 'fastify-swagger';
+import fastifySwagger from 'fastify-swagger';
 import routes from './routes';
 import swagger from './config/swagger';
 
-fastlify.register(fastlifySwagger, swagger.options);
+fastify.register(fastifySwagger, swagger.options);
 
 routes.forEach((route, index) => {
-  fastlify.route(route);
+  fastify.route(route);
 });
 
 const start = async () => {
   try {
-    await fastlify.listen(3000, '0.0.0.0');
-    fastlify.swagger();
-    fastlify.log.info(`Server listening on ${fastlify.server.address().port}`);
+    await fastify.listen(3000, '0.0.0.0');
+    fastify.swagger();
+    fastify.log.info(`Server listening on ${fastify.server.address().port}`);
   } catch (error) {
-    fastlify.log.error(error);
+    fastify.log.error(error);
     process.exit(1);
   }
 };

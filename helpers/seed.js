@@ -1,6 +1,6 @@
 import faker from 'faker';
 import boom from 'boom';
-import fastlify from '../server';
+import fastify from '../server';
 import Car from '../models/Car';
 import Owner from '../models/Owner';
 import Service from '../models/Service';
@@ -100,7 +100,7 @@ const generateServiceData = carsIds => {
   return serviceData;
 };
 
-fastlify.ready().then(
+fastify.ready().then(
   async () => {
     try {
       const owners = await Owner.insertMany(generateOwnerData());
