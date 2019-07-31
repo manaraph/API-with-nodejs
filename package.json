@@ -4,6 +4,7 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "boom": "^7.3.0",
+    "faker": "^4.1.0",
     "fastify": "^2.7.0",
     "fastify-swagger": "^2.4.0",
     "graphql": "^14.1.1",

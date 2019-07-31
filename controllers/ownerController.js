@@ -10,3 +10,23 @@ exports.getOwner = async () => {
     throw boom.boomify(error);
   }
 };
+
+exports.getSingleOwner = async req => {
+  try {
+    const id = req.params === undefined ? req.id : req.params.id;
+    const owner = await Owner.findById(id);
+    return owner;
+  } catch (error) {
+    throw boom.boomify(error)
+  }
+};
+
+exports.getOwnersCars = async req => {
+  try {
+    const id = req.params === undefined ? req.id : req.params.id;
+    const cars = await Car.find({ owner_id: id });
+    return cars;
+  } catch (error) {
+    throw boom.boomify(error);
+  }
+};
